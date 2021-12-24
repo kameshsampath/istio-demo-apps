@@ -1,0 +1,12 @@
+{{- if .Values.enableIstioGateway }}
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: {{ include "customer.fullname" . }}-{{ include "customer.version" . }}-dr
+spec:
+  host: {{ printf "%s.%s.svc.cluster.local" (include "customer.fullname" .) .Release.Namespace }}
+  subsets:
+    - name: {{ include "customer.version" . }}
+      labels:
+        version: {{ include "customer.version" . }}
+ {{ end }}
