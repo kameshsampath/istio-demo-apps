@@ -9,7 +9,12 @@ spec:
   gateways:
     - {{ include "customer.fullname" . }}-gateway
   http:
-    - route:
+    - match:
+        - uri:
+            prefix: /customer
+      rewrite:
+        uri: /
+      route:
         - destination:
             host: {{ printf "%s.%s.svc.cluster.local" (include "customer.fullname" .) .Release.Namespace }}
             subset: {{ include "customer.version" . }}

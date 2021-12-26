@@ -10,7 +10,7 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-# By default the image uses Quarkus fast-jar, other possible values native  
+# By default the image uses Quarkus native, other possible values jar
 imageFormat: ""
 
 imagePullSecrets: [ ]
@@ -54,11 +54,11 @@ resources:
 probes:
   livenessProbe:
     httpGet:
-      path: /q/live
+      path: /q/health/live
       port: http
   readinessProbe:
     httpGet:
-      path: /q/ready
+      path: /q/helath/ready
       port: http
 
 nodeSelector: { }

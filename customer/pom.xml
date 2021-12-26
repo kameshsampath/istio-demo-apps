@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
@@ -9,21 +9,14 @@
     <version>1.0.0</version>
   </parent>
   <artifactId>customer</artifactId>
-  <properties>
-    <jkube.generator.name>quay.io/kameshsampath/%a:%v</jkube.generator.name>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy</artifactId>
+      <artifactId>quarkus-resteasy-reactive</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-rest-client</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-opentracing</artifactId>
+      <artifactId>quarkus-rest-client-reactive</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -31,7 +24,16 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-smallrye-metrics</artifactId>
+      <artifactId>quarkus-container-image-docker</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-opentelemetry-exporter-otlp</artifactId>
+    </dependency>
+    <!-- b3, b3multi, jaeger and ottrace propagators   -->
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-extension-trace-propagators</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -80,22 +82,6 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
-      <!-- This need to run only after Quarkus Tasks -->
-      <plugin>
-        <groupId>org.eclipse.jkube</groupId>
-        <artifactId>kubernetes-maven-plugin</artifactId>
-        <version>${jkube.kubernetes.maven.plugin}</version>
-        <executions>
-          <execution>
-            <id>build-push-image</id>
-            <phase>package</phase>
-            <goals>
-              <goal>build</goal>
-              <goal>push</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -106,10 +92,6 @@
           <name>native</name>
         </property>
       </activation>
-      <properties>
-        <jkube.image.name>quay.io/kameshsampath/%a:%v-native</jkube.image.name>
-        <quarkus.package.type>native</quarkus.package.type>
-      </properties>
       <build>
         <pluginManagement>
           <plugins>
@@ -137,6 +119,9 @@
           </plugins>
         </pluginManagement>
       </build>
+      <properties>
+        <quarkus.package.type>native</quarkus.package.type>
+      </properties>
     </profile>
   </profiles>
 </project>

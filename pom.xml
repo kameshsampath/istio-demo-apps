@@ -19,7 +19,12 @@
     <quarkus.platform.version>2.5.0.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
     <jkube.kubernetes.maven.plugin>1.5.1</jkube.kubernetes.maven.plugin>
-    <jkube.build.strategy>jib</jkube.build.strategy>
+    <!-- Container Image configuration -->
+    <quarkus.container-image.registry>quay.io</quarkus.container-image.registry>
+    <quarkus.container-image.group>kameshsampath</quarkus.container-image.group>
+    <!--suppress UnresolvedMavenProperty -->
+    <quarkus.container-image.additional-tags>${project.version}-${quarkus.package.type}
+    </quarkus.container-image.additional-tags>
     <skipTests>true</skipTests>
   </properties>
   <dependencyManagement>
