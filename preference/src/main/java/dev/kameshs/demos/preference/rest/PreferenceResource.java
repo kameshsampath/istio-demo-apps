@@ -56,7 +56,6 @@ public class PreferenceResource {
       message = serviceNotAvailableMessage.get();
     } else if (ps.getCause() instanceof UnknownHostException) {
       logger.warning("Host 'recommendation' not known");
-      responseStatus = Response.Status.NOT_FOUND;
       message = serviceNotFoundMessage.get();
     }
 
