@@ -58,7 +58,7 @@ probes:
       port: http
   readinessProbe:
     httpGet:
-      path: /q/helath/ready
+      path: /q/health/ready
       port: http
 
 nodeSelector: { }
