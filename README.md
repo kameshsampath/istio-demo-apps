@@ -1,88 +1,25 @@
-# Java Microservices
+## Usage
 
-There are three different and super simple microservices in this system and they are chained together in the following
-sequence:
+[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
 
-```
-customer → preference → recommendation
-```
-
-These microservices can be used to demonstrate features of [Istio](https://isito.io)
-and [Envoy Proxy](https://envoyproxy.io)
-
-## Required Tools
-
-- helm v3.7.1
-- kubectl 1.21+
-- Java 11+
-- maven
-- Docker for Desktop Mac/Linux/Windows
-
-## Deploy Application
-
-### Customer
-
-### Native
+Once Helm has been set up correctly, add the repo as follows:
 
 ```shell
-helm upgrade --install customer $DEMO_HOME/charts/customer
+helm repo add istio-demos-apps https://kameshsampath.github.io/istio-demos-apps
 ```
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages.  You can then run `helm search repo
+<alias>` to see the charts.
 
-### Hotspot
+To install the <chart-name> chart:
 
 ```shell
-helm upgrade --install customer $DEMO_HOME/charts/customer --set imageFormat="jar"
+helm install my-<chart-name> <alias>/<chart-name>
 ```
 
-If you want Istio Gateway to be enabled for customer service, then you can add `--set enableIstioGateway=true` as part
-of your helm command.
-
-e.g.
+To uninstall the chart:
 
 ```shell
-helm upgrade --install customer $DEMO_HOME/charts/customer --set enableIstioGateway="true"
-```
-
-### Preference
-
-### Native
-
-```shell
-helm upgrade --install preference $DEMO_HOME/charts/preference
-```
-
-### Hotspot
-
-```shell
-helm upgrade --install preference $DEMO_HOME/charts/preference --set imageFormat="jar"
-```
-
-### Recommendation
-
-### V1
-
-### Native
-
-```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/recommendation
-```
-
-### Hotspot
-
-```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/preference --set imageFormat="jar"
-```
-
-### V2
-
-```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/recommendation --set image.tag="2.0.0"
-```
-
-### Hotspot
-
-```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/recommendation \
-  --set image.tag="2.0.0" \
-  --set imageFormat="jar"
+helm delete my-<chart-name>
 ```

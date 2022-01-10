@@ -1,6 +1,0 @@
-resources:
-  - sa.yaml
-  - deployment.yaml
-  - service.yaml
-  - virtual-service.yaml
-  - destination-rule.yaml
