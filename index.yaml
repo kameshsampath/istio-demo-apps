@@ -1,5 +1,27 @@
 apiVersion: v1
 entries:
+  customer:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-01-10T16:37:28.972735329Z"
+    description: A Helm chart to deploy customer demo application
+    digest: 4b329486ae229fe4441e8cda884be1c8155661fe3677dec26ecd7fb3cbcb24e0
+    name: customer
+    type: application
+    urls:
+    - https://github.com/kameshsampath/istio-demo-apps/releases/download/customer-0.1.0/customer-0.1.0.tgz
+    version: 0.1.0
+  preference:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-01-10T16:37:29.104959208Z"
+    description: A Helm chart to deploy Preference demo application
+    digest: 24a3ba0fa7dc8e03850a396f1b7c5338227df229603a76335e967da85640acc1
+    name: preference
+    type: application
+    urls:
+    - https://github.com/kameshsampath/istio-demo-apps/releases/download/preference-0.1.0/preference-0.1.0.tgz
+    version: 0.1.0
   recommendation:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -11,4 +33,4 @@ entries:
     urls:
     - https://github.com/kameshsampath/istio-demo-apps/releases/download/recommendation-0.1.0/recommendation-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-10T16:02:19.258233047Z"
+generated: "2022-01-10T16:37:29.252554771Z"
