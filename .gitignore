@@ -39,3 +39,7 @@ nb-configuration.xml
 .env
 .envrc
 !.mvn
+vm/.vagrant/
+vm/.minikube
+vm/.kube/**
+!vm/.kube/.gitkeep
