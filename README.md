@@ -1,26 +1,20 @@
-# Usage
+## Usage
 
 [Helm](https://helm.sh) must be installed to use the charts.  Please refer to
 Helm's [documentation](https://helm.sh/docs) to get started.
 
 Once Helm has been set up correctly, add the repo as follows:
 
-```
-helm repo add istio-demos-apps https://kameshsampath.github.io/istio-demos-apps
-```
+  helm repo add istio-demo-apps https://kameshsampath.github.io/istio-demo-apps
 
 If you had already added this repo earlier, run `helm repo update` to retrieve
 the latest versions of the packages.  You can then run `helm search repo
 <alias>` to see the charts.
 
-To install the <chart-name> chart:
+To install the customer app chart:
 
-```shell
-helm install my-<chart-name> <alias>/<chart-name>
-```
+    helm install customer isito-demo-apps/customer
 
 To uninstall the chart:
 
-```shell
-helm delete my-<chart-name>
-```
+    helm delete customer
