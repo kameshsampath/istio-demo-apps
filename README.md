@@ -1,11 +1,8 @@
 # Java Microservices
 
-There are three different and super simple microservices in this system and they are chained together in the following
-sequence:
+There are three different and super simple microservices in this system and they are chained together in the following  sequence:
 
-```
-customer → preference → recommendation
-```
+![](./images/cust-rec-pref-svc.png)
 
 These microservices can be used to demonstrate features of [Istio](https://isito.io)
 and [Envoy Proxy](https://envoyproxy.io)
@@ -20,27 +17,31 @@ and [Envoy Proxy](https://envoyproxy.io)
 
 ## Deploy Application
 
+```shell
+helm repo add istio-demo-apps https://kameshsampath.github.io/istio-demo-apps
+helm repo update
+```
+
 ### Customer
 
 ### Native
 
 ```shell
-helm upgrade --install customer $DEMO_HOME/charts/customer
+helm upgrade --install customer istio-demo-apps/customer
 ```
 
 ### Hotspot
 
 ```shell
-helm upgrade --install customer $DEMO_HOME/charts/customer --set imageFormat="jar"
+helm upgrade --install customer istio-demo-apps/customer --set imageFormat="jar"
 ```
 
-If you want Istio Gateway to be enabled for customer service, then you can add `--set enableIstioGateway=true` as part
-of your helm command.
+If you want Istio Gateway to be enabled for customer service, then you can add `--set enableIstioGateway=true` as part of your helm command.
 
 e.g.
 
 ```shell
-helm upgrade --install customer $DEMO_HOME/charts/customer --set enableIstioGateway="true"
+helm upgrade --install customer istio-demo-apps/customer --set enableIstioGateway="true"
 ```
 
 ### Preference
@@ -48,13 +49,13 @@ helm upgrade --install customer $DEMO_HOME/charts/customer --set enableIstioGate
 ### Native
 
 ```shell
-helm upgrade --install preference $DEMO_HOME/charts/preference
+helm upgrade --install preference istio-demo-apps/preference
 ```
 
 ### Hotspot
 
 ```shell
-helm upgrade --install preference $DEMO_HOME/charts/preference --set imageFormat="jar"
+helm upgrade --install preference istio-demo-apps/preference --set imageFormat="jar"
 ```
 
 ### Recommendation
@@ -64,25 +65,25 @@ helm upgrade --install preference $DEMO_HOME/charts/preference --set imageFormat
 ### Native
 
 ```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/recommendation
+helm upgrade --install recommendation istio-demo-apps/recommendation
 ```
 
 ### Hotspot
 
 ```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/preference --set imageFormat="jar"
+helm upgrade --install recommendation istio-demo-apps/preference --set imageFormat="jar"
 ```
 
 ### V2
 
 ```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/recommendation --set image.tag="2.0.0"
+helm upgrade --install recommendation istio-demo-apps/recommendation --set image.tag="2.0.0"
 ```
 
 ### Hotspot
 
 ```shell
-helm upgrade --install recommendation $DEMO_HOME/charts/recommendation \
+helm upgrade --install recommendation istio-demo-apps/recommendation \
   --set image.tag="2.0.0" \
   --set imageFormat="jar"
 ```
