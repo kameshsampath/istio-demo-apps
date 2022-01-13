@@ -25,6 +25,16 @@ entries:
   recommendation:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2022-01-13T07:22:18.290653373Z"
+    description: A Helm chart to deploy recommendation demo application
+    digest: 926d0642b7d3e50d3d66521a72f1fa48d9957a6a103b751499841bccce30468d
+    name: recommendation
+    type: application
+    urls:
+    - https://github.com/kameshsampath/istio-demo-apps/releases/download/recommendation-0.1.1/recommendation-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-01-10T16:02:19.258101146Z"
     description: A Helm chart for Kubernetes
     digest: 3ec13f839a6f1ead0cc2d50374a5d63b5f4a61eeb99924c1327411d1a461d615
@@ -33,4 +43,4 @@ entries:
     urls:
     - https://github.com/kameshsampath/istio-demo-apps/releases/download/recommendation-0.1.0/recommendation-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-10T16:37:29.252554771Z"
+generated: "2022-01-13T07:22:18.29066297Z"
