@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "recommendation.fullname" . }}-{{ include "recommendation.version" . }}
+  name: {{ include "recommendation.fullname" . }}
   labels:
     {{- include "recommendation.labels" . | nindent 4 }}
 spec:

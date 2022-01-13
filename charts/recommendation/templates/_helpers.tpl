@@ -57,6 +57,7 @@ helm.sh/chart: {{ include "recommendation.chart" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
@@ -64,8 +65,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "recommendation.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "recommendation.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: recommendation
 {{- end }}
 
 {{/*
