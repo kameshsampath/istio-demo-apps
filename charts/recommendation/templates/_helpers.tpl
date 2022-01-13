@@ -9,8 +9,13 @@ Expand the name of the chart.
 Application Version labels
 */}}
 {{- define "recommendation.version" -}}
-{{- $appVersion :=  semver .Chart.AppVersion }}
+{{- if .Values.image.tag }}
+{{- $appVersion :=  semver .Values.image.tag }}
 {{- printf "v%d" $appVersion.Major }}
+{{- else }}
+{{- $appVersion :=  semver "1.0.0" }}
+{{- printf "v%d" $appVersion.Major }}
+{{- end}}
 {{- end }}
 
 {{- define "recommendation.versionLabels" -}}
